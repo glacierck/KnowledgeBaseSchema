@@ -1,4 +1,4 @@
-#coding = utf-8
+#coding=utf-8
 from urllib import quote,urlopen
 from lxml import etree
 import pymongo
@@ -6,7 +6,7 @@ conn = pymongo.MongoClient()
 
 def init_seed(seed_path):#初始化种子词
     seed_dict = {}
-    for line in open('seed_category.txt'):
+    for line in open(seed_path):
         line = line.strip().split(',')
         category = line[0]
         par_category = line[1]

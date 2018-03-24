@@ -9,6 +9,7 @@ from lxml import etree
 import pymongo
 conn=pymongo.MongoClient()
 db=conn['concept_project']
+
 record_list=set()
 
 def get_categories(url):
@@ -29,6 +30,7 @@ def check_child(p_name,p_id,content):
                 if p_name == name:
                     return 
                 else:
+
                     insert_db(name,_id,p_id,p_name)
                     content=get_categories('http://fenlei.baike.com/category/Ajax_cate.jsp?catename='+quote(name.encode('utf-8')))
                     check_child(name,_id,content)
@@ -51,6 +53,6 @@ def collect_categorys():
     if len(content)>0:
         check_child(name,_id,content)
 
-
-if __name__=="__main__":
-    count_words()
+collect_categorys()
+# if __name__=="__main__":
+#     count_words()
